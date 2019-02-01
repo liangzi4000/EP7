@@ -10,12 +10,12 @@ Global Const $v_screenshotpath = @ScriptDir & "\Assets\screenshot\"
 	$filename: screenshot file name, if it's empty, default file name will be used
 	$logfile: the log file to record debug message, if it's empty, defualt file will be used
 #comments-end
-Func CaptureFullScreen($filename = "", $myscreenshotpath = "")
+Func CaptureFullScreen($filename = Default, $myscreenshotpath = Default)
 	Local $area[4] = [0, 0, -1, -1]
 	Return _CaptureScreen($filename, $myscreenshotpath, $area)
 EndFunc   ;==>CaptureFullScreen
 
-Func CaptureActiveWindow($filename = "", $myscreenshotpath = "")
+Func CaptureActiveWindow($filename = Default, $myscreenshotpath = Default)
 	Local $area[4]
 	Local $winpos = GetWinPosition()
 	Local $ctrlpos = GetCtrlPosition()
@@ -28,10 +28,10 @@ EndFunc   ;==>CaptureActiveWindow
 
 Func _CaptureScreen($filename, $myscreenshotpath, $area)
 	Local $screenshotpath = $v_screenshotpath
-	If $myscreenshotpath <> "" Then $screenshotpath = $myscreenshotpath
+	If $myscreenshotpath <> Default Then $screenshotpath = $myscreenshotpath
 
 	Local $defaultfilename = StringReplace(StringReplace(StringReplace(_NowCalc(), "/", ""), ":", ""), " ", "") & "_" & Random(1000, 9999, 1) & ".jpg"
-	If $filename <> "" Then $defaultfilename = $filename
+	If $filename <> Default Then $defaultfilename = $filename
 
 	_ScreenCapture_Capture($screenshotpath & $defaultfilename, $area[0], $area[1], $area[2], $area[3], False)
 	Return $defaultfilename

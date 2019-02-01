@@ -120,7 +120,10 @@ Func Logout()
 EndFunc   ;==>Logout
 
 Func CloseApp()
-	;To do
+	;Close app
+	ShellExecuteWait($v_nox_path_adb,$v_closeappparams)
+	OpenApp()
+	Logout()
 EndFunc   ;==>CloseApp
 
 Func MoveWindow()
@@ -147,9 +150,10 @@ Func MoveWindow()
 EndFunc   ;==>MoveWindow
 
 Func OpenApp()
-	ClickImage("app_icon_home.bmp")
+	;Open app
+	ShellExecuteWait($v_nox_path_noxconsole,$v_openappparams)
 EndFunc   ;==>OpenApp
 
-Func RunScript()
+Func CallSurrogate()
 	Run(@ScriptDir & "\Surrogate.exe")
 EndFunc   ;==>RunScript
