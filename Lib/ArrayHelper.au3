@@ -32,3 +32,13 @@ Func ConvertArrayInArrayToString($arr)
 	Next
 	Return $result
 EndFunc   ;==>ConvertArrayInArrayToString
+
+Func GetRowFromArray(ByRef $arrr, $index)
+	Local $elem = []
+	For $col = 0 To UBound($arrr, 2) - 1
+		_ArrayAdd($elem, $arrr[$index][$col])
+	Next
+	_ArrayDelete($elem, 0)
+	Return $elem
+EndFunc   ;==>GetRowFromArray
+

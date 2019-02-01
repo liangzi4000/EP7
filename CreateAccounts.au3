@@ -29,7 +29,7 @@ Func ChangeNameAndLogout()
 	SendPasteKeys()
 	ClickOnRelative($ui_changename_pop_elem2)
 	Sleep(2000)
-	While CheckPixelList($ui_changename_pop_name_ok) = False
+	While FindPixelList($ui_changename_pop_name_ok) = False
 		ClickOnRelative($ui_changename_pop_elem1)
 		Send("{BACKSPACE}")
 		ClickOnRelative($ui_changename_pop_elem2)
@@ -162,7 +162,7 @@ Func Fight1_1()
 	Fight()
 	SkipConversation()
 	WriteLog("Click on stage clear arrow until zailaiyici button appear")
-	ClickPosUntilScreenByMultiPixel($btn_stage_clear, $btn_zailaiyici, 1200)
+	ClickPosUntilScreenByMultiPixel($btn_stage_clear, $btn_zailaiyici, Default, 1200)
 	WriteLog("Proceed to 1-2")
 	ProceedToNextEpisode()
 	WriteLog("Click on choose team button until ui_ready_to_skip.bmp")
@@ -244,7 +244,7 @@ Func PrepareFight()
 	WriteLog("Click on menu maoxian until ready to fight button appear")
 	ClickPosUntilScreenByMultiPixel($menu_maoxian, $btn_ready_to_fight)
 	WriteLog("Click on ready to fight button until fight over flag")
-	ClickPosUntilScreenByMultiPixel($btn_ready_to_fight_elem1, $ui_fight_over, 1000)
+	ClickPosUntilScreenByMultiPixel($btn_ready_to_fight_elem1, $ui_fight_over, Default, 1000)
 EndFunc   ;==>PrepareFight
 
 Func Fight1_3_repeat()
@@ -262,7 +262,7 @@ Func Fight1_3_repeat()
 	Sleep(1000)
 	ClickOnRelative($ui_assist_friend_elem3) ; 取消朋友请求
 	WriteLog("Click on stage clear arrow until zailaiyici button appear")
-	ClickPosUntilScreenByMultiPixel($btn_stage_clear, $btn_zailaiyici, 1200)
+	ClickPosUntilScreenByMultiPixel($btn_stage_clear, $btn_zailaiyici, Default, 1200)
 	ProceedToNextEpisode()
 	WriteLog("Click on choose team button until $ui_fight_over")
 	ClickPosUntilScreenByMultiPixel($ui_1_2_choose_team_elem1, $ui_fight_over)
@@ -321,10 +321,10 @@ Func Fight($exitoption = "all", $targetimg = "ui_ready_to_skip.bmp")
 		If SearchImageActive($targetimg, $pos[0], $pos[1]) = 1 And ($exitoption = "all" Or $exitoption = "img") Then
 			$exitflag = True
 			WriteLog("Exit Fight - found " & $targetimg)
-		ElseIf CheckPixelList($ui_fight_over) = True And ($exitoption = "all" Or $exitoption = "pixel") Then
+		ElseIf FindPixelList($ui_fight_over) = True And ($exitoption = "all" Or $exitoption = "pixel") Then
 			$exitflag = True
 			WriteLog("Exit Fight - found $ui_fight_over")
-		ElseIf CheckPixelList($ui_assist_friend) = True And ($exitoption = "all" Or $exitoption = "pixel") Then
+		ElseIf FindPixelList($ui_assist_friend) = True And ($exitoption = "all" Or $exitoption = "pixel") Then
 			$exitflag = True
 			WriteLog("Exit Fight - found $ui_assist_friend")
 		EndIf
@@ -373,7 +373,7 @@ Func ProceeToNextFight()
 	Do
 		PressAndHold($btn_go, 1)
 		$timeout = $timeout - 1
-		If CheckPixelList($ui_fight) = True Then
+		If FindPixelList($ui_fight) = True Then
 			$exitflag = True
 			WriteLog("Exit ProceedToNextFight - found $ui_fight")
 		ElseIf $timeout < 0 Then
@@ -394,7 +394,7 @@ Func IsReadyToSkipExist()
 EndFunc   ;==>IsReadyToSkipExist
 
 Func CloseFriendRequestScreen()
-	If CheckPixelList($ui_assist_friend) = True Then
+	If FindPixelList($ui_assist_friend) = True Then
 		ClickOnRelative($ui_assist_friend_elem3)
 	EndIf
 EndFunc   ;==>CloseFriendRequestScreen

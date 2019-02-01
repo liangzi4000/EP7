@@ -38,6 +38,13 @@ Global $menu_maoxian[3] = [927, 517, 0xD4D4D4] ; 冒险
 Global $menu_setting[3] = [960, 34, 0x4487EB] ;设置按钮
 Global $ui_bar = [$menu_hero, $menu_maoxian, $menu_setting] ; 酒吧界面
 Global $btn_queren_guest_login[3] = [544, 335, 0x030F24] ;确认游客登陆
+Global $ui_ready_free_draw[3] = [253, 487, 0xDB550B] ;Ready for free draw
+Global $btn_mailbox_receive_all[3] = [727, 74, 0x2D2D2D] ;信件->接收 全部领取
+Global $btn_mailbox_receive_green[3] = [763, 199, 0x165010] ;信件->接收 绿色领取按钮
+Global $btn_mailbox_operation_tab[3] = [291, 119, 0x90641B] ;信件->营运 橘黄色背景
+Global $btn_mailbox_operation_receive[3] = [764, 199, 0x165010] ;信件->营运->接收 绿色按钮
+Global $btn_mailbox_operation_pop_receive[3] = [494, 456, 0x1D6110] ;信件->营运->pop->接收 绿色按钮
+
 
 ; 战斗开始
 Global $ui_fight_elem1[3] = [25, 63, 0xFFFFFF] ; Hourglass
@@ -52,9 +59,9 @@ Global $ui_fight_over_elem3[3] = [86, 49, 0xFFFFFF] ; 当前位置 - 白点
 Global $ui_fight_over = [$ui_fight_over_elem1, $ui_fight_over_elem2, $ui_fight_over_elem3]
 
 ; 圣约召唤
-Global $btn_shengyuezhaohuan_elem1[3] = [722, 213, 0xDB550B]
-Global $btn_shengyuezhaohuan_elem2[3] = [730, 225, 0xF6BD44]
-Global $btn_shengyuezhaohuan_elem3[3] = [740, 219, 0x4582B6]
+Global $btn_shengyuezhaohuan_elem1[3] = [734, 226, 0xFDC043] ;中间黄色十字星
+Global $btn_shengyuezhaohuan_elem2[3] = [740, 232, 0x38749F] ;右下加蓝色边框
+Global $btn_shengyuezhaohuan_elem3[3] = [756, 214, 0x061620] ;右上角黑色部分
 Global $btn_shengyuezhaohuan = [$btn_shengyuezhaohuan_elem1, $btn_shengyuezhaohuan_elem2, $btn_shengyuezhaohuan_elem3]
 
 ; 再来一次
@@ -129,7 +136,7 @@ Global $btn_zhaohuan_queren = [$btn_zhaohuan_queren_elem1, $btn_zhaohuan_queren_
 Global $btn_close_announcement_elem1[3] = [953, 34, 0xFFFFFF]
 Global $btn_close_announcement_elem2[3] = [933, 32, 0xFFFFFF]
 Global $btn_close_announcement_elem3[3] = [887, 514, 0xEBE8E8] ;右下角关闭按钮
-Global $btn_close_announcement = [$btn_close_announcement_elem1, $btn_close_announcement_elem2, $btn_close_announcement_elem3]
+Global $btn_close_announcement = [$btn_close_announcement_elem1, $btn_close_announcement_elem2]
 
 ;
 Global $btn_ready_to_fight_elem1[3] = [829, 506, 0xE1E4E1]
@@ -167,7 +174,7 @@ Global $ui_changename_pop_name_ok = [$ui_changename_pop_elem1, $ui_changename_po
 Global $ui_changename_done = [$ui_changename_elem1, $ui_changename_elem3]
 
 ;设置界面
-Global $ui_setting_elem1[3] = [727, 96, 0xFFFFFF] ; 公告
+Global $ui_setting_elem1[3] = [964, 25, 0xFFFFFF] ; 右上角 X
 Global $ui_setting_elem2[3] = [732, 185, 0xFFFFFF] ; 好友
 Global $ui_setting_elem3[3] = [703, 515, 0xFFFFFF] ; 设定齿轮
 Global $ui_setting = [$ui_setting_elem1, $ui_setting_elem2, $ui_setting_elem3]
@@ -244,19 +251,41 @@ Global $ui_next_summon_elem1[3] = [434, 463, 0xFCF9F0] ; X小时候可免费召�
 Global $ui_next_summon_elem2[3] = [22, 25, 0xFFFFFF] ; 左上角-返回箭头
 Global $ui_next_summon_elem3[3] = [583, 510, 0xFFFFFF] ; 底部-圣约召唤白色图标
 Global $ui_next_summon_elem4[3] = [638, 511, 0xFFFFFF] ; 底部-图鉴白色图标
-Global $ui_next_summon_elem5[3] = [739, 322, 0x7BBA15] ; 右侧-友情召唤绿色图标
-Global $ui_next_summon_elem6[3] = [909, 34, 0xFFFFFF] ; 右上角-信件白色图标
-Global $ui_next_summon = [$btn_zhaohuan_elem1, $btn_zhaohuan_elem2, $ui_next_summon_elem1, $ui_next_summon_elem2, $ui_next_summon_elem3, $ui_next_summon_elem4, $ui_next_summon_elem5, $ui_next_summon_elem6]
+Global $ui_next_summon_elem5[3] = [738, 371, 0x7DBB17] ; 右侧-友情召唤绿色图标
+Global $ui_next_summon_elem6[3] = [864, 33, 0xFFFFFF] ; 右上角-信件白色图标
+Global $ui_next_summon_elem7[3] = [967, 23, 0x4487EB] ; 右上角-设置蓝色图标1
+Global $ui_next_summon_elem8[3] = [966, 37, 0x4487EB] ; 右上角-设置蓝色图标2
+Global $ui_next_summon_elem9[3] = [948, 37, 0x4487EB] ; 右上角-设置蓝色图标3
+Global $ui_next_summon = [$btn_zhaohuan_elem1, $btn_zhaohuan_elem2, $ui_next_summon_elem1, $ui_next_summon_elem2, $ui_next_summon_elem3, $ui_next_summon_elem4, $ui_next_summon_elem5, $ui_next_summon_elem6,$ui_next_summon_elem7,$ui_next_summon_elem8,$ui_next_summon_elem9]
 
 ; 信件界面
 Global $ui_mailbox_elem1[3] = [184, 78, 0xFFFFFF] ; 信件-白色文字-信
 Global $ui_mailbox_elem2[3] = [207, 70, 0xFFFFFF] ; 信件-白色文字-件
 Global $ui_mailbox_elem3[3] = [229, 108, 0x4D3C22] ; 一般-黄色背景
-Global $ui_mailbox_elem4[3] = [147, 297, 0x634F34] ; 左边-黄色边框
-Global $ui_mailbox_elem5[3] = [477, 508, 0x91795A] ; 下边-黄色边框
-Global $ui_mailbox_elem6[3] = [838, 299, 0x634F34] ; 右边-黄色边框
-Global $ui_mailbox_elem7[3] = [299, 108, 0xCFCFCF] ; 营运-白色文字
-Global $ui_mailbox = [$ui_mailbox_elem1, $ui_mailbox_elem2, $ui_mailbox_elem3, $ui_mailbox_elem4, $ui_mailbox_elem5, $ui_mailbox_elem6, $ui_mailbox_elem7]
+;~ Global $ui_mailbox_elem4[3] = [147, 297, 0x634F34] ; 左边-黄色边框
+;~ Global $ui_mailbox_elem5[3] = [477, 508, 0x91795A] ; 下边-黄色边框
+;~ Global $ui_mailbox_elem6[3] = [838, 299, 0x634F34] ; 右边-黄色边框
+;~ Global $ui_mailbox_elem7[3] = [299, 108, 0xCFCFCF] ; 营运-白色文字
+Global $ui_mailbox = [$ui_mailbox_elem1, $ui_mailbox_elem2, $ui_mailbox_elem3]
+
+; 再召唤一次
+Global $btn_summon_again_elem1[3] = [701, 505, 0xFCC146] ; 再召唤一次-圣约召唤图标
+Global $btn_summon_again_elem2[3] = [801, 505, 0x092518] ; 再召唤一次-绿色背景
+Global $btn_summon_again_elem3[3] = [869, 501, 0xFEFEFE] ; 再召唤一次-白色文字
+Global $btn_summon_again = [$btn_summon_again_elem1,$btn_summon_again_elem2,$btn_summon_again_elem3]
+
+; 没有可领取的信件
+Global $ui_no_mail_elem1[4] = [492, 273, 0x555555,2] ; 中间i
+Global $ui_no_mail_elem2[4] = [516, 282, 0x121212,2] ; 黑色部分
+Global $ui_no_mail_elem3[4] = [459, 303, 0x4E4E4E,2] ; 灰色文字
+Global $ui_no_mail_elem4[4] = [528, 302, 0x545454,2] ; 灰色文字
+Global $ui_no_mail = [$ui_no_mail_elem1,$ui_no_mail_elem2,$ui_no_mail_elem3,$ui_no_mail_elem4]
+
+; 新春出席活动-蓝色确认按钮
+Global $btn_new_year_ok_elem1[3] = [649, 483, 0x041025] ; 左边蓝色
+Global $btn_new_year_ok_elem2[3] = [738, 486, 0x041026] ; 右边蓝色
+Global $btn_new_year_ok = [$btn_new_year_ok_elem1,$btn_new_year_ok_elem2]
+
 #EndRegion App specific configuration
 
 #Region General Function Configuration

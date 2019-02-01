@@ -64,6 +64,7 @@ Func Main()
 ;~ 		EndIf
 	WEnd
 	WriteLog("Accounts sign in completed.")
+;~ 	Shutdown(BitOR($SD_SHUTDOWN,$SD_FORCE)) ; shutdown PC
 	Exit
 
 ;~ 	; Reset inactive window array to default

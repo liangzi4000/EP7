@@ -6,9 +6,9 @@ Global $steps = []
 _ArrayAdd($steps, "GetNextRecord")
 _ArrayAdd($steps, "Login")
 _ArrayAdd($steps, "CloseNotification")
+_ArrayAdd($steps, "GetDailyAward")
 _ArrayAdd($steps, "DrawFreeCard")
 _ArrayAdd($steps, "CompleteDailyTask")
-_ArrayAdd($steps, "GetDailyAward")
 _ArrayAdd($steps, "Logout")
 _ArrayAdd($steps, "CheckExit")
 
@@ -50,15 +50,21 @@ Func Login()
 EndFunc   ;==>Login
 
 Func CloseNotification()
-	WriteLog("Wait for notification screen")
-	WaitPixelList($btn_close_announcement)
+;~ 	WriteLog("Wait for notification screen")
+;~ 	WaitPixelList($btn_close_announcement)
 
 	WriteLog("Click X to close notification")
 	ClickPosUntilScreenByMultiPixel($btn_close_announcement_elem1, $ui_daily_award)
 
 	WriteLog("Click confirm to close daily award")
-	ClickPosUntilScreenByMultiPixel($btn_close_announcement_elem3, $ui_bar)
+	ClickPosUntilScreenByMultiPixel($btn_close_announcement_elem3, $ui_bar, "CloseNewYearEventNtf")
 EndFunc   ;==>CloseNotification
+
+Func CloseNewYearEventNtf()
+	If FindPixelList($btn_new_year_ok) = True Then
+		ClickOnRelative($btn_new_year_ok_elem1)
+	EndIf
+EndFunc
 
 Func DrawFreeCard()
 	WriteLog("Click on zhaohuan menu until shenyuezhaohuan appear")
@@ -71,12 +77,33 @@ Func DrawFreeCard()
 	ClickOnRelative($btn_zhaohuan_queren_elem1)
 	Sleep(1000)
 	WriteLog("Click on scrreen/arrow until setting icon appear")
-	ClickPosUntilScreenByMultiPixel($ui_return_after_zhaohuan_elem1, $ui_next_summon)
+	Do
+		ClickPosUntilScreenByMultiPixel($ui_return_after_zhaohuan_elem1, $ui_next_summon)
+		Local $pixelresult = SearchPixel($ui_ready_free_draw)
+	Until $pixelresult[0] = $pixel_empty[0] And $pixelresult[1] = $pixel_empty[1]
+;~ 	CaptureActiveWindow()
 EndFunc   ;==>DrawFreeCard
 
 Func GetDailyAward()
-;~ 	$ui_next_summon_elem6
+	WriteLog("Click on mailbox icon until the pop up window appear")
+	ClickPosUntilScreenByMultiPixel($ui_next_summon_elem6, $ui_mailbox)
+	Sleep(1000)
+	WriteLog("Get all wards")
+	ClickOnRelative($btn_mailbox_receive_all)
+	ClickPosUntilScreenByMultiPixel($btn_mailbox_receive_green,$ui_no_mail)
+	WriteLog("Go to operation tab")
+	ClickPosUntilScreenByPixel($btn_mailbox_operation_tab,$btn_mailbox_operation_tab)
+	ClickPosUntilScreenByMultiPixel($btn_mailbox_operation_receive, $ui_no_mail, "ConfirmReceive")
+	WriteLog("Close the mailbox pop up window")
+	ClickPosUntilScreenByMultiPixel($ui_next_summon_elem6, $ui_bar)
 EndFunc   ;==>GetDailyAward
+
+Func ConfirmReceive()
+	Local $pixelresult = SearchPixel($btn_mailbox_operation_pop_receive)
+	If $pixelresult[0] <> $pixel_empty[0] Or $pixelresult[1] <> $pixel_empty[1] Then
+		ClickOnRelative($btn_mailbox_operation_pop_receive)
+	EndIf
+EndFunc
 
 Func Logout()
 	WriteLog("Click on top right corner setting button until setting list screen appear")

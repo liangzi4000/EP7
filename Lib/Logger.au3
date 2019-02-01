@@ -8,10 +8,10 @@ Global Const $v_exception = "_Exception"
 
 ;possible $file value: "","_errorhandler", or "_reset"
 Func WriteLog($msg, $file = "")
-;~ 	Local $hFile = FileOpen(GetLog($file), 9)
-;~ 	_FileWriteLog($hFile, $msg)
-;~ 	FileClose($hFile)
-	ConsoleWrite(Timestamp() & " " & $msg & @CRLF)
+	Local $hFile = FileOpen(GetLog($file), 9)
+	_FileWriteLog($hFile, $msg)
+	FileClose($hFile)
+;~ 	ConsoleWrite(Timestamp() & " " & $msg & @CRLF)
 EndFunc   ;==>WriteLog
 
 Func GetLog($file = "")
