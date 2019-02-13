@@ -39,12 +39,11 @@ Func ShutdownAfterFinish()
 EndFunc   ;==>ShutdownAfterFinish
 
 Func Main()
-;~ For $xy = 0 To 5
+;~ For $xy = 0 To 50
 ;~ 		For $x=0 To UBound($createaccountsteps)-1
 ;~ 			ExecStep($createaccountsteps[$x])
 ;~ 		Next
 ;~ Next
-
 ;~ 		Exit
 
 
@@ -70,6 +69,7 @@ Func Main()
 ;~ 	; Reset inactive window array to default
 ;~ 	While UBound($inactivewindows) > 1
 ;~ 		_ArrayPop($inactivewindows)
+
 ;~ 	WEnd
 
 	;While UBound($inactivewindows)-1 <> UBound($v_windows)
@@ -94,7 +94,7 @@ Func OnAutoitExit()
 	WriteLog("OnAutoitExit Called.")
 	Switch $exitaction
 		Case $exitaction_restart
-			RestartApp()
+;~ 			RestartApp()
 		Case $exitaction_shutdownpc
 			;Shutdown(BitOR($SD_SHUTDOWN,$SD_FORCE)) ; shutdown PC
 		Case $exitaction_terminatescript
@@ -109,6 +109,8 @@ Func RestartApp()
 	$v_email_Body = GetAccountInfo("uid")
 	_INetSmtpMailCom($v_email_SmtpServer,$v_email_FromName,$v_email_FromAddress,$v_email_ToAddress,$v_email_Subject,$v_email_Body,$v_email_AttachFiles,$v_email_CcAddress,$v_email_BccAddress,$v_email_Importance,$v_email_Username,$v_email_Password,$v_email_IPPort,$v_email_ssl)
 	ExecStep($g_fn_closeapp)
+	OpenApp()
+	Logout()
 	CallSurrogate()
 EndFunc
 

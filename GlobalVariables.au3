@@ -31,7 +31,7 @@ Global $side_renwu_clicked[3] = [462, 151, 0x086D73] ; 任务打开之后
 Global $btn_qianwang[2] = [912, 257] ; 接受/前往
 Global $btn_stage_clear[2] = [950, 516] ; stage clear
 Global $btn_guest_login[2] = [481, 493] ; 游客登入
-Global $btn_server_asia[2] = [664, 201] ; 亚服
+Global $btn_server_asia[2] = [679, 305] ; 亚服
 Global $menu_zhaohuan[3] = [176, 499, 0xB5B5B5] ; 召唤
 Global $menu_hero[3] = [111, 493, 0xEBEBEB] ; 英雄
 Global $menu_maoxian[3] = [927, 517, 0xD4D4D4] ; 冒险
@@ -59,9 +59,18 @@ Global $ui_fight_over_elem3[3] = [86, 49, 0xFFFFFF] ; 当前位置 - 白点
 Global $ui_fight_over = [$ui_fight_over_elem1, $ui_fight_over_elem2, $ui_fight_over_elem3]
 
 ; 圣约召唤
-Global $btn_shengyuezhaohuan_elem1[3] = [734, 226, 0xFDC043] ;中间黄色十字星
-Global $btn_shengyuezhaohuan_elem2[3] = [740, 232, 0x38749F] ;右下加蓝色边框
-Global $btn_shengyuezhaohuan_elem3[3] = [756, 214, 0x061620] ;右上角黑色部分
+;~ Global $btn_shengyuezhaohuan_elem1[3] = [734, 226, 0xFDC043] ;中间黄色十字星
+;~ Global $btn_shengyuezhaohuan_elem2[3] = [740, 232, 0x38749F] ;右下加蓝色边框
+;~ Global $btn_shengyuezhaohuan_elem3[3] = [756, 214, 0x061620] ;右上角黑色部分
+
+;~ Global $btn_shengyuezhaohuan_elem1[3] = [731, 87, 0xFDC343] ;中间黄色十字星
+;~ Global $btn_shengyuezhaohuan_elem2[3] = [735, 95, 0x4184B1] ;右下加蓝色边框
+;~ Global $btn_shengyuezhaohuan_elem3[3] = [749, 77, 0x060608] ;右上角黑色部分
+
+Global $btn_shengyuezhaohuan_elem1[3] = [723, 214, 0xDB550B] ; 红色小点
+Global $btn_shengyuezhaohuan_elem2[3] = [732, 226, 0xE3A342] ;中间黄色十字星
+Global $btn_shengyuezhaohuan_elem3[3] = [736, 233, 0x3A79A5] ;右下加蓝色边框
+
 Global $btn_shengyuezhaohuan = [$btn_shengyuezhaohuan_elem1, $btn_shengyuezhaohuan_elem2, $btn_shengyuezhaohuan_elem3]
 
 ; 再来一次
@@ -71,7 +80,7 @@ Global $btn_zailaiyici_elem3[3] = [765, 491, 0x231B0A] ; 再来一次 - 棕色�
 Global $btn_zailaiyici = [$btn_zailaiyici_elem1, $btn_zailaiyici_elem2, $btn_zailaiyici_elem3]
 
 ; 选择队伍
-Global $ui_1_2_choose_team_elem1[4] = [721, 495, 0xF4EEF4, 20] ; 选择队伍 - 白色文字
+Global $ui_1_2_choose_team_elem1[4] = [832, 496, 0x64BC19, 20] ; 选择队伍 - 绿色箭头
 Global $ui_1_2_choose_team_elem2[4] = [619, 338, 0xEBE4EB, 20] ; 白色背包 - 可获得的奖励
 Global $ui_1_2_choose_team_elem3[4] = [197, 41, 0xF5EEF5, 20] ; 选择辅助英雄 - 白色文字
 Global $ui_1_2_choose_team = [$ui_1_2_choose_team_elem1, $ui_1_2_choose_team_elem2, $ui_1_2_choose_team_elem3]
@@ -88,8 +97,8 @@ Global $btn_denglu_elem2[3] = [496, 452, 0x000000]
 Global $btn_denglu = [$btn_denglu_elem1, $btn_denglu_elem2]
 
 ; Android Notification Window
-Global $btn_ntf_no_elem1[3] = [632, 316, 0xD7D7D7]
-Global $btn_ntf_no_elem2[3] = [653, 310, 0x000000]
+Global $btn_ntf_no_elem1[3] = [633, 329, 0xD7D7D7]
+Global $btn_ntf_no_elem2[3] = [652, 331, 0x151515]
 Global $btn_ntf_no = [$btn_ntf_no_elem1, $btn_ntf_no_elem2]
 
 ; 加载完毕，点击开始
@@ -177,7 +186,9 @@ Global $ui_changename_done = [$ui_changename_elem1, $ui_changename_elem3]
 Global $ui_setting_elem1[3] = [964, 25, 0xFFFFFF] ; 右上角 X
 Global $ui_setting_elem2[3] = [732, 185, 0xFFFFFF] ; 好友
 Global $ui_setting_elem3[3] = [703, 515, 0xFFFFFF] ; 设定齿轮
-Global $ui_setting = [$ui_setting_elem1, $ui_setting_elem2, $ui_setting_elem3]
+Global $ui_setting_elem4[3] = [800, 524, 0x1F417E] ; 浅蓝色
+Global $ui_setting_elem5[3] = [961, 311, 0x0F203F] ; 深蓝色
+Global $ui_setting = [$ui_setting_elem1, $ui_setting_elem2, $ui_setting_elem3, $ui_setting_elem4, $ui_setting_elem5]
 
 ;选项界面
 Global $ui_option_elem1[3] = [380, 92, 0x503D21] ; 账号设定
@@ -195,7 +206,7 @@ Global $ui_link = [$ui_link_elem1, $ui_link_elem2, $ui_link_elem3]
 
 ;Email UI
 Global $ui_email_elem1[3] = [409, 405, 0xFBE2D1] ; 确定按钮
-Global $ui_email_elem2[3] = [491, 481, 0xF7C09B] ; 新注册
+Global $ui_email_elem2[3] = [479, 473, 0xEC701C] ; 新加入
 Global $ui_email = [$ui_email_elem1, $ui_email_elem2]
 
 ;使用条款
@@ -285,6 +296,19 @@ Global $ui_no_mail = [$ui_no_mail_elem1,$ui_no_mail_elem2,$ui_no_mail_elem3,$ui_
 Global $btn_new_year_ok_elem1[3] = [649, 483, 0x041025] ; 左边蓝色
 Global $btn_new_year_ok_elem2[3] = [738, 486, 0x041026] ; 右边蓝色
 Global $btn_new_year_ok = [$btn_new_year_ok_elem1,$btn_new_year_ok_elem2]
+
+; 召唤完英雄 - 确认
+Global $btn_after_summon_confirm_elem1[3] = [874, 514, 0xFFFFFF] ; 白色文字
+Global $btn_after_summon_confirm_elem2[3] = [878, 528, 0x4E3114] ; 浅色背景
+Global $btn_after_summon_confirm_elem3[3] = [822, 513, 0x1F0F09] ; 深色背景
+Global $btn_after_summon_confirm = [$btn_after_summon_confirm_elem1,$btn_after_summon_confirm_elem2,$btn_after_summon_confirm_elem3]
+
+; 略过教学
+Global $btn_skip_toturial_elem1[3] = [968, 25, 0x806543]; X
+Global $btn_skip_toturial_elem2[3] = [938, 24, 0x000000]; 黑色背景
+Global $btn_skip_toturial_elem3[3] = [918, 23, 0xAB8759]; 棕色文字
+Global $btn_skip_toturial = [$btn_skip_toturial_elem1,$btn_skip_toturial_elem2,$btn_skip_toturial_elem3]
+
 
 #EndRegion App specific configuration
 

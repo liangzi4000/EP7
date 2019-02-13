@@ -90,7 +90,7 @@ Func GetDailyAward()
 	Sleep(1000)
 	WriteLog("Get all wards")
 	ClickOnRelative($btn_mailbox_receive_all)
-	ClickPosUntilScreenByMultiPixel($btn_mailbox_receive_green,$ui_no_mail)
+	ClickPosUntilScreenByMultiPixel($btn_mailbox_receive_green,$ui_no_mail, "HandleSpecialDraw")
 	WriteLog("Go to operation tab")
 	ClickPosUntilScreenByPixel($btn_mailbox_operation_tab,$btn_mailbox_operation_tab)
 	ClickPosUntilScreenByMultiPixel($btn_mailbox_operation_receive, $ui_no_mail, "ConfirmReceive")
@@ -105,6 +105,16 @@ Func ConfirmReceive()
 	EndIf
 EndFunc
 
+Func HandleSpecialDraw()
+	If FindPixelList($btn_after_summon_confirm) = True Then
+		ClickOnRelative($btn_after_summon_confirm_elem1)
+	EndIf
+
+	If FindPixelList($btn_skip_toturial) = True Then
+		ClickOnRelative($btn_skip_toturial_elem1)
+	EndIf
+EndFunc
+
 Func Logout()
 	WriteLog("Click on top right corner setting button until setting list screen appear")
 	ClickPosUntilScreenByMultiPixel($menu_setting, $ui_setting)
@@ -114,7 +124,7 @@ Func Logout()
 	ClickPosUntilScreenByMultiPixel($ui_option_elem5, $ui_logout)
 	WriteLog("Click on confirm logout button")
 	ClickOnRelative($ui_logout_elem2)
-	Sleep(1000)
+	Sleep(2000)
 	WriteLog("Click on confirm logout button again")
 	ClickOnRelative($ui_logout_elem2)
 EndFunc   ;==>Logout
@@ -122,8 +132,6 @@ EndFunc   ;==>Logout
 Func CloseApp()
 	;Close app
 	ShellExecuteWait($v_nox_path_adb,$v_closeappparams)
-	OpenApp()
-	Logout()
 EndFunc   ;==>CloseApp
 
 Func MoveWindow()
@@ -152,6 +160,7 @@ EndFunc   ;==>MoveWindow
 Func OpenApp()
 	;Open app
 	ShellExecuteWait($v_nox_path_noxconsole,$v_openappparams)
+	Sleep(10000)
 EndFunc   ;==>OpenApp
 
 Func CallSurrogate()
